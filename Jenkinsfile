@@ -11,7 +11,8 @@ pipeline {
 			steps {
 			 	withSonarQubeEnv('LocalSonar') {
 					sh '/Applications/SonarScanner/bin/sonar-scanner -Dproject.settings=/Applications/sonar-scanner.properties'
-              			}	
+              			}
+				sh 'env'
 			}
 		}
 		stage("UAT") {
