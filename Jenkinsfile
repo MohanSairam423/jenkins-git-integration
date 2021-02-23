@@ -13,6 +13,7 @@ pipeline {
 					sh '/Applications/SonarScanner/bin/sonar-scanner -Dproject.settings=/Applications/sonar-scanner.properties'
 					sh 'env'
               			}
+				snDevOpsSonar('LocalSonar', 'github-jenkins-sonar')
 				//sh 'env'
 			}
 		}
