@@ -4,8 +4,7 @@ pipeline {
     stages {
 		stage("Build") {
 			steps {
-				echo "BUILD"	
-				snDevOpsSonar(name:'LocalSonar', projectKey:'github-jenkins-sonar')
+				echo "BUILD"
 			}
 		}
 		stage("Code Quality") {
