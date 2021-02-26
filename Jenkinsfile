@@ -11,7 +11,7 @@ pipeline {
 			steps {
 			 	withSonarQubeEnv('LocalSonar') {
 					sh '/Applications/SonarScanner/bin/sonar-scanner -Dproject.settings=/Applications/sonar-scanner.properties'
-					sh 'env'
+					//sh 'env'
               			}
 				snDevOpsSonar(name:'LocalSonar', projectKey:'github-jenkins-sonar')
 				//sh 'env'
@@ -28,7 +28,7 @@ pipeline {
 				echo "PROD"
 				withSonarQubeEnv('LocalSonar') {
 					sh '/Applications/SonarScanner/bin/sonar-scanner -Dproject.settings=/Applications/sonar-scanner.properties'
-					sh 'env'
+					//sh 'env'
               			}
 				snDevOpsSonar(name:'LocalSonar', projectKey:'github-jenkins-sonar')
 			}
