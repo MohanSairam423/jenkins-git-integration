@@ -5,6 +5,7 @@ pipeline {
 		stage("Build") {
 			steps {
 				echo "BUILD"	
+				snDevOpsSonar(name:'LocalSonar', projectKey:'github-jenkins-sonar')
 			}
 		}
 		stage("Code Quality") {
@@ -19,12 +20,18 @@ pipeline {
 		}
 		stage("UAT") {
 			steps {
-				echo "UAT"	
+				echo "UAT"
+				snDevOpsSonar(name:'LocalSonar', projectKey:'github-jenkins-sonar')
 			}
 		}
 		stage("Prod") {
 			steps {
-				echo "PROD"	
+				echo "PROD"
+				withSonarQubeEnv('LocalSonar') {
+					sh '/Applications/SonarScanner/bin/sonar-scanner -Dproject.settings=/Applications/sonar-scanner.properties'
+					sh 'env'
+              			}
+				snDevOpsSonar(name:'LocalSonar', projectKey:'github-jenkins-sonar')
 			}
 		}
 	}
