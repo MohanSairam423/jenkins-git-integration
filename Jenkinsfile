@@ -20,6 +20,7 @@ pipeline {
 		stage("UAT") {
 			steps {
 				echo "UAT"
+				sleep 10
 				snDevOpsSonar(name:'LocalSonar', projectKey:'github-jenkins-sonar')
 			}
 		}
